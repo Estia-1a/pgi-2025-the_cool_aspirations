@@ -14,7 +14,7 @@
 void helloWorld(char *source_path) {
     printf("Hello World !");
 }
-void tenth_pixel(){
+void tenth_pixel(char *source_path){
     unsigned char *data = NULL;
     int width = 0, height = 0, channels = 0;
 
