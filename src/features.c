@@ -14,3 +14,14 @@
 void helloWorld() {
     printf("Hello World !");
 }
+
+void first_pixel(char *source_path){
+
+    unsigned char *data;
+    int width, height, channels;
+    int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
+    int R = data[0];
+    int G = data[1];
+    int B = data[2];
+    printf ("first_pixel: %d, %d, %d\n", R, G, B);
+}
