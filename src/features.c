@@ -16,7 +16,7 @@ void helloWorld() {
 }
 essai
 void first_pixel(char *source_path){
-
+    ;
     unsigned char *data;
     int width, height, channels;
     int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
