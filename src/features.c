@@ -32,9 +32,9 @@ void tenth_pixel(char *source_path){
 
     unsigned long idx = 9UL * channels;
 
-    unsigned int R = data[idx + 0];
-    unsigned int G = data[idx + 1];
-    unsigned int B = data[idx + 2];
+    unsigned int R = data[27];
+    unsigned int G = data[28];
+    unsigned int B = data[29];
 
     printf("tenth_pixel: %u, %u, %u\n", R, G, B);
 
