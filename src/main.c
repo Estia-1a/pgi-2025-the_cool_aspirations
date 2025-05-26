@@ -38,5 +38,10 @@ int main(int argc, char **argv) {
 
     first_pixel()
   }
+
+  if ( strncmp(configuration.command,"second_line",12)==0){
+
+    second_line()
+  }
   return 0;
 }
