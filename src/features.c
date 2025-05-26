@@ -3,6 +3,7 @@
 
 #include "features.h"
 #include "utils.h"
+#include <stdlib.h>
 
 /**
  * @brief Here, you have to code features of the project.
@@ -11,7 +12,7 @@
  * When the feature is totally implemented, your commit message must contain "close #n".
  */
 
-void helloWorld(char *source_path) {
+void helloWorld() {
     printf("Hello World !");
 }
 void tenth_pixel(char *source_path){
