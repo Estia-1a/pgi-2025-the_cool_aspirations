@@ -36,12 +36,12 @@ int main(int argc, char **argv) {
    */
   if ( strncmp(configuration.command,"first_pixel",11)==0){
 
-    first_pixel()
+    first_pixel(configuration.filenames[0]);
   }
 
   if ( strncmp(configuration.command,"second_line",12)==0){
 
-    second_line()
+    second_line(configuration.filenames[0]);
   }
   return 0;
 }

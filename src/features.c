@@ -26,7 +26,7 @@ void first_pixel(char *source_path){
     printf ("first_pixel: %d, %d, %d\n", R, G, B);
 }
 
-voidsecond_line(char *source_path){
+void second_line(char *source_path){
     unsigned char *data;
     int width, height, channels;
     int index = width * channels;
@@ -34,5 +34,5 @@ voidsecond_line(char *source_path){
     int G = data[index + 1];
     int B = data[index + 2];
 
-    printf("second_line: %d, %d, %d\n", R, G, B,);
+    printf("second_line: %d, %d, %d\n", R, G, B);
 }
