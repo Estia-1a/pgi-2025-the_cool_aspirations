@@ -8,6 +8,8 @@
  *
 */
 
+void helloWorld(void);
+
 typedef struct _pixelRGB {
   /*
    * TO COMPLETE
