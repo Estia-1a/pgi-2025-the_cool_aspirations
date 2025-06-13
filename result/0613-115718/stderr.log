@@ -1,0 +1,78 @@
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c: In function ‘min_pixel’:
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:31:5: error: unknown type name ‘Image’
+   31 |     Image* img= read_image_data(filename);
+      |     ^~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:31:17: error: too few arguments to function ‘read_image_data’
+   31 |     Image* img= read_image_data(filename);
+      |                 ^~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:23:9: note: declared here
+   23 |     int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
+      |         ^~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:35:5: error: unknown type name ‘Pixel’
+   35 |     Pixel min_p = {0};
+      |     ^~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:37:26: error: request for member ‘height’ in something not a structure or union
+   37 |     for (int y=0; y < img->height; y++) {
+      |                          ^~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:38:29: error: request for member ‘width’ in something not a structure or union
+   38 |         for (int x=0; x<img ->width; x++){
+      |                             ^~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:39:13: error: unknown type name ‘Pixel’
+   39 |             Pixel p= img->data [y * img->width + x];
+      |             ^~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:39:25: error: request for member ‘data’ in something not a structure or union
+   39 |             Pixel p= img->data [y * img->width + x];
+      |                         ^~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:39:40: error: request for member ‘width’ in something not a structure or union
+   39 |             Pixel p= img->data [y * img->width + x];
+      |                                        ^~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:40:24: error: request for member ‘r’ in something not a structure or union
+   40 |             int sum = p.r+ p.g+p.b;
+      |                        ^
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:40:29: error: request for member ‘g’ in something not a structure or union
+   40 |             int sum = p.r+ p.g+p.b;
+      |                             ^
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:40:33: error: request for member ‘b’ in something not a structure or union
+   40 |             int sum = p.r+ p.g+p.b;
+      |                                 ^
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:49:71: error: request for member ‘r’ in something not a structure or union
+   49 |         printf("min_pixel (%d, %d): %d, %d, %d/n", min_x, min_y, min_p.r, min_p.g,minp.b);
+      |                                                                       ^
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:49:80: error: request for member ‘g’ in something not a structure or union
+   49 |         printf("min_pixel (%d, %d): %d, %d, %d/n", min_x, min_y, min_p.r, min_p.g,minp.b);
+      |                                                                                ^
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:49:83: error: ‘minp’ undeclared (first use in this function); did you mean ‘min_p’?
+   49 |         printf("min_pixel (%d, %d): %d, %d, %d/n", min_x, min_y, min_p.r, min_p.g,minp.b);
+      |                                                                                   ^~~~
+      |                                                                                   min_p
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:49:83: note: each undeclared identifier is reported only once for each function it appears in
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:51:9: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+   51 |         free(img->data);
+      |         ^~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+    5 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+    6 | 
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:51:9: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   51 |         free(img->data);
+      |         ^~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:51:9: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:51:17: error: request for member ‘data’ in something not a structure or union
+   51 |         free(img->data);
+      |                 ^~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c: At top level:
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:54:1: error: expected identifier or ‘(’ before ‘}’ token
+   54 | }
+      | ^
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c:35:29: error: ‘Config’ {aka ‘struct _config’} has no member named ‘filename’; did you mean ‘filenames’?
+   35 |     min_pixel(configuration.filename);
+      |                             ^~~~~~~~
+      |                             filenames
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
