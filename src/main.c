@@ -31,6 +31,9 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     helloWorld();
   }
+  else if (strncmp(configuration.command, "min_pixel", 9) == 0) {
+    min_pixel(configuration.filename);
+  }
   /*
    * TO COMPLETE
    */
