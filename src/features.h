@@ -20,4 +20,6 @@ void color_in_blue(char *source_path);
 
 void color_in_green(char *source_path);
 
+void color_invert(char *source_path);
+
 #endif
