@@ -19,24 +19,25 @@ void tenth_pixel(char *source_path){
     unsigned char *data = NULL;
     int width = 0, height = 0, channels = 0;
 
-    if (read_image_data(source_path, &data, &width, &height, &channels) != 0) {
-        fprintf(stderr, "Erreur : impossible de lire '%s'\n", source_path);
-        return;
+    if (read_image_data(source_path, &data, &width, &height, &channels)) {
+        unsigned char *data;
+        printf("FIchier lu!");
     }
 
-    if (width < 10) {
+
+    /*if (width < 10) {
         fprintf(stderr, "Erreur : l'image doit avoir au moins 10 pixels de large (ici %d)\n", width);
         free(data);
         return;
-    }
+    }*/
 
-    unsigned long idx = 9UL * channels;
+    //unsigned long idx = 9UL * channels;
 
-    unsigned int R = data[27];
+    /* unsigned int R = data[27];
     unsigned int G = data[28];
     unsigned int B = data[29];
 
-    printf("tenth_pixel: %u, %u, %u\n", R, G, B);
+    printf("tenth_pixel: %u, %u, %u\n", R, G, B);*/
 
     free(data);
 }
