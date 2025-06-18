@@ -69,28 +69,38 @@ void max_pixel(char *source_path){
 }
 
 
-void min_pixel(const char*filename){
-    Image*img= read_image_data(filename);
-    int min_val=767;
-    int min_x = -1;
-    int min_y = -1;
-    Pixel min_p = {0};
+void min_pixel(char *source_path){
+    int width = 0, height = 0, channels;
+    int min = 900, xmin = 0, ymin = 0, rmin = 0, gmin = 0, bmin = 0;
+    unsigned char *data;
 
-    for (int y=0; y < img->height; y++) {
-        for (int x=0; x<img ->width; x++){
-            Pixel p= img->data [y * img->width + x];
-            int sum = p.r+ p.g+p.b; 
-            if(sum< min_val){
-                min_val= sum;
-                min_p = p;
-                min_x = x;
-                min_y = y;
-            }
+    int resultat = read_image_data(source_path, &data, &width, &height, &channels);
+    if (!resultat) {
+        printf("Erreur de lecture...\n");
+        return;
+    }
+
+    // On parcourt tous les pixels dans les limites correctes
+    for (int x = 0; x < width;  x++) {
+        for (int y = 0; y < height; y++) {
+            int index = (y * width + x) * channels;
+            int r = data[index];
+            int g = data[index + 1];
+            int b = data[index + 2];
+            int somme = r + g + b;
+
+            if (somme < min) {
+                min = somme;
+                xmin = x;
+                ymin = y;
+                rmin = r;
+                gmin = g;
+                bmin = b;
             }
         }
-        printf("min_pixel (%d, %d): %d, %d, %d/n", min_x, min_y, min_p.r, min_p.g,minp.b);
-
-        free(img->data);
-        free(img);
     }
-}*/
+
+    printf("min_pixel (%d, %d): %d, %d, %d\n", xmin, ymin, rmin, gmin, bmin);
+
+    free(data);  // Libère la mémoire allouée
+}
