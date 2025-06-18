@@ -1,0 +1,5 @@
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c:56:5: warning: implicit declaration of function ‘color_in_red’; did you mean ‘color_invert’? [-Wimplicit-function-declaration]
+   56 |     color_in_red(configuration.filenames[0]);
+      |     ^~~~~~~~~~~~
+      |     color_invert
