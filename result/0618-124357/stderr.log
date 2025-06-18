@@ -1,0 +1,5 @@
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c:72:4: warning: implicit declaration of function ‘color_in_blue’; did you mean ‘color_blue’? [-Wimplicit-function-declaration]
+   72 |    color_in_blue( configuration.filenames[0]);
+      |    ^~~~~~~~~~~~~
+      |    color_blue
