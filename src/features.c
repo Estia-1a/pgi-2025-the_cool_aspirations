@@ -171,3 +171,22 @@ void max_component(char *source_path, int t) {
         printf("Erreur lors de la lecture de l'image\n");
     }
 }
+
+void color_in_blue(char *source_path) {
+    int width, height, channels;
+    unsigned char *data;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels)) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int index = (y * width + x) * channels;
+                data[index] = 0;       // R
+                data[index + 1] = 0;   // G
+                
+            }
+        }
+        free(data);
+    } else {
+        printf("Erreur lors de la lecture de l'image\n");
+    }
+}

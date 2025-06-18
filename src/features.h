@@ -13,4 +13,6 @@ void max_pixel(char* filename);
 void min_component(char* filename, int t);
 
 void max_component(char* filename, int t);
+
+void color_blue(char *source_path);
 #endif

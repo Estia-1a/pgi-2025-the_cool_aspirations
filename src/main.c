@@ -63,5 +63,9 @@ int main(int argc, char **argv) {
     }
     max_component( configuration.filenames[0],t);
   }
+
+   if ( strncmp( configuration.command, "color_in_blue", 13) == 0){
+   color_in_blue( configuration.filenames[0]);
+   }
   return 0;
 }
