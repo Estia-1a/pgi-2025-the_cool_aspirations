@@ -208,3 +208,22 @@ void color_in_blue(char *source_path) {
         printf("Erreur lors de la lecture de l'image\n");
     }
 }
+
+void color_in_green(char *source_path) {
+    int width, height, channels;
+    unsigned char *data;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels)) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int index = (y * width + x) * channels;
+                data [index] = 0; //couleur rouge
+                data [index + 2] = 0; //couleur bleu
+            }
+        }
+    write_image_data ("images/output/image_in_green.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
+}

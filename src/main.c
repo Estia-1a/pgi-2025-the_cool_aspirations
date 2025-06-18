@@ -69,7 +69,12 @@ int main(int argc, char **argv) {
   }
 
    if ( strncmp( configuration.command, "color_in_blue", 13) == 0){
-   color_in_blue( configuration.filenames[0]);
+   color_in_blue(configuration.filenames[0]);
    }
+
+   if ( strncmp( configuration.command, "color_in_green", 14) == 0){
+   color_in_green(configuration.filenames[0]);
+   }
+   
   return 0;
 }
