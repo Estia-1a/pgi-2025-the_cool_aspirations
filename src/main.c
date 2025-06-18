@@ -64,8 +64,8 @@ int main(int argc, char **argv) {
     max_component( configuration.filenames[0],t);
   }
 
-  if ( strncmp (configuration.command,"Color_Gray", 10)==0){
-  Color_Gray(configuration.command [0]);
+  if ( strncmp (configuration.command,"color_gray", 10)==0){
+  color_gray(configuration.filenames[0]);
   }
   return 0;
 }

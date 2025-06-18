@@ -172,7 +172,7 @@ void max_component(char *source_path, int t) {
     }
 }
 
-void Color_Gray(char *source_path) {
+void color_gray(char *source_path){
     int  width, height, channels, x, y;
     unsigned char *data;
     if( read_image_data(source_path, &data, &width, &height, &channels)){
@@ -190,9 +190,10 @@ void Color_Gray(char *source_path) {
 
             }
         }
-        write_image_data("image/output/image_gray.bmp", width, height, data);
+        write_image_data("image/output/image_gray.bmp",data, width, height);
         free (data);
     } else{
-        pritnf("Erreur!");
+        printf("Erreur!");
     }
 }
+

@@ -14,5 +14,6 @@ void min_component(char* filename, int t);
 
 void max_component(char* filename, int t);
 
-void Color_Gray(char *source_path);
+void color_gray(char *source_path);
+
 #endif
