@@ -278,3 +278,25 @@ void color_invert (char *source_path){
     printf("Erreur !");
 }
 }
+
+void rotate_cw (char *source_path){
+    int width, height, channels, x, y;
+    unsigned char *data;
+    if ( read_image_data(source_path, &data, &width, &height, &channels)){
+    unsigned char *new_data = (unsigned char*)malloc(width * height * channels * sizeof(unsigned char));
+    for (int y = 0; y < height; y++){
+        for (int x = 0; x < width; x++){
+            int new_x = height - 1 - y;
+            int new_y = x;
+        for (int c = 0; c < channels; c++){
+            new_data [(new_y * height + new_x) * channels + c] = data [(y * width + x) * channels + c];
+        }
+        }
+    }
+    write_image_data ("images/output/image_rotate_cw.bmp", new_data, height, width);
+    free(new_data);
+    free_image_data(data);
+} else {
+    printf("Erreur !");
+}
+}

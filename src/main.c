@@ -84,5 +84,10 @@ int main(int argc, char **argv) {
     if ( strncmp( configuration.command, "color_in_gray_luminance", 23) == 0){
    color_in_gray_luminance( configuration.filenames[0]);
   }
+
+  if (strncmp(configuration.command, "rotate_cw", 9) == 0) {
+    rotate_cw(configuration.filenames[0]);
+  }
+  
   return 0;
 }
