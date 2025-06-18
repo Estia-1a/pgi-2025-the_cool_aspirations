@@ -23,7 +23,7 @@ void tenth_pixel(char *source_path){
         unsigned char *data;
         printf("FIchier lu!");
     }
-
+    //ERreur
 
     /*if (width < 10) {
         fprintf(stderr, "Erreur : l'image doit avoir au moins 10 pixels de large (ici %d)\n", width);
