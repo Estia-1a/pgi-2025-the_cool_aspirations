@@ -104,3 +104,36 @@ void min_pixel(char *source_path){
 
     free(data);  // Libère la mémoire allouée
 }
+
+void min_component(char *source_path, int t) {
+    int width, height, channels;
+    int xmin = 0, ymin = 0;
+    int min = 256; // Max pour un canal RGB
+    unsigned char *data;
+
+    int resultat = read_image_data(source_path, &data, &width, &height, &channels);
+
+    if (resultat) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                pixelRGB* pointeur = getPixel(data, width, height, channels, x, y);
+                if (pointeur != NULL) {
+                    int value = 256;
+                    if (t == 'R') value = pointeur->R;
+                    else if (t == 'G') value = pointeur->G;
+                    else if (t == 'B') value = pointeur->B;
+
+                    if (value < min) {
+                        min = value;
+                        xmin = x;
+                        ymin = y;
+                    }
+                }
+            }
+        }
+
+        printf("min_component %c (%d,%d): %d)\n", t, xmin, ymin, min);
+    } else {
+        printf("Erreur lors de la lecture de l'image\n");
+    }
+}

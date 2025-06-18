@@ -42,6 +42,15 @@ int main(int argc, char **argv) {
   if ( strncmp( configuration.command, "min_pixel", 9) == 0) {
     min_pixel( configuration.filenames[0] );
   }
+
+  if ( strncmp( configuration.command, "min_component", 13) == 0){
+    char t = configuration.arguments[0][0];
+    if (t != 'R' && t != 'G' && t != 'B') {
+      printf("Erreur le texte apres doit etre R G ou B!!!");
+      return 0;
+    }
+    min_component( configuration.filenames[0],t);
+  }
   /*
    * TO COMPLETE
    */
