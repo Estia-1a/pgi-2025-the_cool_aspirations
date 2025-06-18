@@ -221,8 +221,9 @@ void color_in_green(char *source_path) {
                 data [index + 2] = 0; //couleur bleu
             }
         }
-        free(data);
-    } else {
-        printf("Erreur !");
-    }
+    write_image_data ("images/output/image_in_green.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
 }
