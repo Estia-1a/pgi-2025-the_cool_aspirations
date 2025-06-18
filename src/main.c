@@ -59,5 +59,17 @@ int main(int argc, char **argv) {
    * TO COMPLETE
    */
   
+  if ( strncmp( configuration.command, "max_component", 13) == 0){
+    char t = configuration.arguments[0][0];
+    if (t != 'R' && t != 'G' && t != 'B') {
+      printf("Erreur le texte apres doit etre R G ou B!!!");
+      return 0;
+    }
+    max_component( configuration.filenames[0],t);
+  }
+
+   if ( strncmp( configuration.command, "color_in_blue", 13) == 0){
+   color_in_blue( configuration.filenames[0]);
+   }
   return 0;
 }
