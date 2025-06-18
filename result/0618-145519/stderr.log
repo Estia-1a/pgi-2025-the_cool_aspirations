@@ -1,0 +1,31 @@
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:331:6: error: redefinition of ‘color_gray’
+  331 | void color_gray(char *source_path){
+      |      ^~~~~~~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:193:6: note: previous definition of ‘color_gray’ with type ‘void(char *)’
+  193 | void color_gray(char *source_path){
+      |      ^~~~~~~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:358:6: error: redefinition of ‘color_invert’
+  358 | void color_invert (char *source_path){
+      |      ^~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:283:6: note: previous definition of ‘color_invert’ with type ‘void(char *)’
+  283 | void color_invert (char *source_path){
+      |      ^~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:384:1: warning: return type defaults to ‘int’ [-Wimplicit-int]
+  384 | void_mirror_total(char * source_path){
+      | ^~~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c: In function ‘void_mirror_total’:
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/features.c:388:93: error: expected ‘)’ before ‘cher’
+  388 |        unsigned char *data = (unsigned char*)malloc(width *height *channels *sizeof(unsigned cher));
+      |                                                                                    ~        ^~~~~
+      |                                                                                             )
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c: In function ‘main’:
+/home/runner/work/pgi-2025-the_cool_aspirations/pgi-2025-the_cool_aspirations/src/main.c:101:1: error: expected declaration or statement at end of input
+  101 | }
+      | ^
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
