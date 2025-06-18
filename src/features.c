@@ -30,6 +30,43 @@ void first_pixel(char *source_path){
     }
 }
 
+void max_pixel(char *source_path){
+    int width = 0, height = 0, channels;
+    int max = 0, xmax = 0, ymax = 0, rmax = 0, gmax = 0, bmax = 0;
+    unsigned char *data;
+
+    int resultat = read_image_data(source_path, &data, &width, &height, &channels);
+    if (!resultat) {
+        printf("Erreur de lecture...\n");
+        return;
+    }
+
+    // On parcourt tous les pixels dans les limites correctes
+    for (int x = 0; x < width;  x++) {
+        for (int y = 0; y < height; y++) {
+            int index = (y * width + x) * channels;
+            int r = data[index];
+            int g = data[index + 1];
+            int b = data[index + 2];
+            int somme = r + g + b;
+
+            if (somme > max) {
+                max = somme;
+                xmax = x;
+                ymax = y;
+                rmax = r;
+                gmax = g;
+                bmax = b;
+            }
+        }
+    }
+
+    printf("max_pixel (%d, %d): %d, %d, %d\n",
+           xmax, ymax, rmax, gmax, bmax);
+
+    free(data);  // Libère la mémoire allouée
+}
+
 /*void min_pixel(const char*filename){
     Image* img= read_image_data(filename);
     int min_val=767;
