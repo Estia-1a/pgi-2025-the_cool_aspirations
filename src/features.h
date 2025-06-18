@@ -6,6 +6,6 @@ void helloWorld();
 
 void first_pixel (char *source_path);
 
-void min_pixel(const char*filename);
+void min_pixel(const char* filename);
 
 #endif

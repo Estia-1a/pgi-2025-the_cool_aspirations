@@ -1,5 +1,6 @@
 #include <estia-image.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "features.h"
 #include "utils.h"
@@ -20,14 +21,16 @@ void first_pixel(char *source_path){
 
     unsigned char *data;
     int width, height, channels;
-    int read_image_data(const char *filename, unsigned char **data, int *width, int *height, int *channel_count);
-    int R = data[0];
-    int G = data[1];
-    int B = data[2];
-    printf ("first_pixel: %d, %d, %d\n", R, G, B);
+    int resultat = read_image_data(source_path, &data, &width, &height, &channels);
+    if (resultat){
+        int R = data[0];
+        int G = data[1];
+        int B = data[2];
+        printf ("first_pixel: %d, %d, %d\n", R, G, B);
+    }
 }
 
-void min_pixel(const char*filename){
+/*void min_pixel(const char*filename){
     Image* img= read_image_data(filename);
     int min_val=767;
     int min_x = -1;
@@ -51,4 +54,4 @@ void min_pixel(const char*filename){
         free(img->data);
         free(img);
     }
-}
+}*/
