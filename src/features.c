@@ -28,7 +28,7 @@ void first_pixel(char *source_path){
 }
 
 void min_pixel(const char*filename){
-    Image* img= read_image_data(filename);
+    Image*img= read_image_data(filename);
     int min_val=767;
     int min_x = -1;
     int min_y = -1;
