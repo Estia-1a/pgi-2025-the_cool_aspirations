@@ -137,3 +137,37 @@ void min_component(char *source_path, int t) {
         printf("Erreur lors de la lecture de l'image\n");
     }
 }
+
+
+void max_component(char *source_path, int t) {
+    int width, height, channels;
+    int xmax = 0, ymax = 0;
+    int max = 0; // Max pour un canal RGB
+    unsigned char *data;
+
+    int resultat = read_image_data(source_path, &data, &width, &height, &channels);
+
+    if (resultat) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                pixelRGB* pointeur = getPixel(data, width, height, channels, x, y);
+                if (pointeur != NULL) {
+                    int value = 0;
+                    if (t == 'R') value = pointeur->R;
+                    else if (t == 'G') value = pointeur->G;
+                    else if (t == 'B') value = pointeur->B;
+
+                    if (value > max) {
+                        max = value;
+                        xmax = x;
+                        ymax = y;
+                    }
+                }
+            }
+        }
+
+        printf("max_component %c (%d,%d): %d\n", t, xmax, ymax, max);
+    } else {
+        printf("Erreur lors de la lecture de l'image\n");
+    }
+}
