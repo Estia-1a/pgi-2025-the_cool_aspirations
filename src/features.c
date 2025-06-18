@@ -171,3 +171,28 @@ void max_component(char *source_path, int t) {
         printf("Erreur lors de la lecture de l'image\n");
     }
 }
+
+void Color_Gray(char *source_path) {
+    int  width, height, channels, x, y;
+    unsigned char *data;
+    if( read_image_data(source_path, &data, &width, &height, &channels)){
+        for (y=0;y<height;y++){
+            for(x=0;x<width;x++){
+                int index= (y*height+x)*channels;
+
+                unsigned char R= data[index];
+                unsigned char G= data[index+1];
+                unsigned char B= data[index+2];
+                unsigned char gray= (R+G+B)/3;
+                data[index]=gray;
+                data [index+1]=gray;
+                data [index+2]=gray;
+
+            }
+        }
+        write_image_data("image/output/image_gray.bmp", width, height, data);
+        free (data);
+    } else{
+        pritnf("Erreur!")
+    }
+}
