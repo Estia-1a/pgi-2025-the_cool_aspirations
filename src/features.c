@@ -99,10 +99,8 @@ void min_pixel(char *source_path){
             }
         }
     }
-
     printf("min_pixel (%d, %d): %d, %d, %d\n", xmin, ymin, rmin, gmin, bmin);
 
-    free(data);  
 }
 
 void min_component(char *source_path, int t) {
@@ -307,7 +305,7 @@ void color_invert (char *source_path){
 }
 
 void rotate_cw (char *source_path){
-    int width, height, channels, x, y;
+    int width, height, channels;
     unsigned char *data;
     if ( read_image_data(source_path, &data, &width, &height, &channels)){
     unsigned char *new_data = (unsigned char*)malloc(width * height * channels * sizeof(unsigned char));
@@ -328,64 +326,11 @@ void rotate_cw (char *source_path){
 }
 }
 
-void color_gray(char *source_path){
-    int  width, height, channels, x, y;
-    unsigned char *data;
-    if( read_image_data(source_path, &data, &width, &height, &channels)){
-        for (y=0;y<height;y++){
-            for(x=0;x<width;x++){
-                int index= (y*height+x)*channels;
-
-                unsigned char R= data[index];
-                unsigned char G= data[index+1];
-                unsigned char B= data[index+2];
-                unsigned char gray= (R+G+B)/3;
-                data[index]=gray;
-                data [index+1]=gray;
-                data [index+2]=gray;
-
-            }
-        }
-        write_image_data("image/output/image_gray.bmp",data, width, height);
-        free (data);
-    } else{
-        printf("Erreur!");
-    }
-}
-
-
-
-void color_invert (char *source_path){
-    int width, height, channels, x, y;
-    unsigned char *data;
-    if ( read_image_data(source_path, &data, &width, &height, &channels)){
-        for (y = 0; y < height; y++){
-            for (x = 0; x < width; x++){
-                int index = (y * width + x) * channels;
-
-                unsigned char old_r = data [index];
-                unsigned char old_g = data [index+1];
-                unsigned char old_b = data [index+2];
-                unsigned char new_r = 255 - old_r;
-                unsigned char new_g = 255 - old_g;
-                unsigned char new_b = 255 - old_b;
-                data[index] = new_r;
-                data[index + 1] = new_g;
-                data[index + 2] = new_b;
-            }
-        }
-    write_image_data ("images/output/image_invert.bmp" , data, width, height);
-    free(data);
-} else {
-    printf("Erreur !");
-}
-}
-
-void_mirror_total(char * source_path){
+void mirror_total (char * source_path){
     int width, height, channels;
     unsigned char *data;
     if (read_image_data(source_path, &data, &width, &height, &channels)){
-       unsigned char *data = (unsigned char*)malloc(width *height *channels *sizeof(unsigned cher));
+       unsigned char *data = (unsigned char*)malloc(width *height *channels *sizeof(unsigned char));
        for (int y = 0; y < height; y++){  
         for (int x = 0; x < width; x++){
             int new_x = width - 1 - x;
