@@ -102,13 +102,13 @@ void min_pixel(char *source_path){
 
     printf("min_pixel (%d, %d): %d, %d, %d\n", xmin, ymin, rmin, gmin, bmin);
 
-    free(data);  // Libère la mémoire allouée
+    free(data);  
 }
 
 void min_component(char *source_path, int t) {
     int width, height, channels;
     int xmin = 0, ymin = 0;
-    int min = 256; // Max pour un canal RGB
+    int min = 256; 
     unsigned char *data;
 
     int resultat = read_image_data(source_path, &data, &width, &height, &channels);
@@ -138,11 +138,29 @@ void min_component(char *source_path, int t) {
     }
 }
 
+void color_in_red (char *source_path) {
+int width, height, channels, x, y;
+unsigned char *data;
+if ( read_image_data (source_path, &data, &width, &height, &channels)){
+    for (y = 0; y < height; y++){
+        for (x=0; x < width; x++){
+            int index = (y*width+x) * channels;
+            data [index + 1] = 0; 
+            data [index + 2] = 0; 
+        }
+    }
+    write_image_data ("images/output/image_in_red.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
+}
+
 
 void max_component(char *source_path, int t) {
     int width, height, channels;
     int xmax = 0, ymax = 0;
-    int max = 0; // Max pour un canal RGB
+    int max = 0; 
     unsigned char *data;
 
     int resultat = read_image_data(source_path, &data, &width, &height, &channels);
@@ -197,3 +215,162 @@ void color_gray(char *source_path){
     }
 }
 
+
+
+void color_in_blue(char *source_path) {
+    int width, height, channels;
+    unsigned char *data;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels)) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int index = (y * width + x) * channels;
+                data[index] = 0;       
+                data[index + 1] = 0;   
+                
+            }
+        }
+        write_image_data ("images/output/image_in_blue.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+    }
+}
+
+
+void color_in_gray_luminance(char *source_path){
+    int width, height, channels, x, y;
+    unsigned char *data;
+    if ( read_image_data(source_path, &data, &width, &height, &channels)){
+        for (y = 0; y < height; y++){
+            for(x = 0; x < width; x++){
+                int index = (y * width + x) * channels;
+                unsigned char R = data[index];
+                unsigned char G = data[index + 1];
+                unsigned char B = data[index + 2];
+                unsigned char gris = (0.21 * R + 0.72 * G + 0.07 * B);
+                data[index] = gris;
+                data[index + 1] = gris;
+                data[index + 2] = gris;
+            }
+        }
+      write_image_data ("images/output/image_in_gray_luminance.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+    }
+}
+
+void color_in_green(char *source_path) {
+    int width, height, channels;
+    unsigned char *data;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels)) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int index = (y * width + x) * channels;
+                data [index] = 0; 
+                data [index + 2] = 0; 
+            }
+        }
+    write_image_data ("images/output/image_in_green.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
+}
+
+void color_invert (char *source_path){
+    int width, height, channels, x, y;
+    unsigned char *data;
+    if ( read_image_data(source_path, &data, &width, &height, &channels)){
+        for (y = 0; y < height; y++){
+            for (x = 0; x < width; x++){
+                int index = (y * width + x) * channels;
+
+                unsigned char old_r = data [index];
+                unsigned char old_g = data [index+1];
+                unsigned char old_b = data [index+2];
+                unsigned char new_r = 255 - old_r;
+                unsigned char new_g = 255 - old_g;
+                unsigned char new_b = 255 - old_b;
+                data[index] = new_r;
+                data[index + 1] = new_g;
+                data[index + 2] = new_b;
+            }
+        }
+    write_image_data ("images/output/image_invert.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
+}
+
+void rotate_cw (char *source_path){
+    int width, height, channels, x, y;
+    unsigned char *data;
+    if ( read_image_data(source_path, &data, &width, &height, &channels)){
+    unsigned char *new_data = (unsigned char*)malloc(width * height * channels * sizeof(unsigned char));
+    for (int y = 0; y < height; y++){
+        for (int x = 0; x < width; x++){
+            int new_x = height - 1 - y;
+            int new_y = x;
+        for (int c = 0; c < channels; c++){
+            new_data [(new_y * height + new_x) * channels + c] = data [(y * width + x) * channels + c];
+        }
+        }
+    }
+    write_image_data ("images/output/image_rotate_cw.bmp", new_data, height, width);
+    free(new_data);
+    free_image_data(data);
+} else {
+    printf("Erreur !");
+}
+}
+
+void color_invert (char *source_path){
+    int width, height, channels, x, y;
+    unsigned char *data;
+    if ( read_image_data(source_path, &data, &width, &height, &channels)){
+        for (y = 0; y < height; y++){
+            for (x = 0; x < width; x++){
+                int index = (y * width + x) * channels;
+
+                unsigned char old_r = data [index];
+                unsigned char old_g = data [index+1];
+                unsigned char old_b = data [index+2];
+                unsigned char new_r = 255 - old_r;
+                unsigned char new_g = 255 - old_g;
+                unsigned char new_b = 255 - old_b;
+                data[index] = new_r;
+                data[index + 1] = new_g;
+                data[index + 2] = new_b;
+            }
+        }
+    write_image_data ("images/output/image_invert.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
+}
+
+void_mirror_total(char * source_path){
+    int width, height, channels;
+    unsigned char *data;
+    if (read_image_data(source_path, &data, &width, &height, &channels)){
+       unsigned char *data = (unsigned char*)malloc(width *height *channels *sizeof(unsigned cher));
+       for (int y = 0; y < height; y++){  
+        for (int x = 0; x < width; x++){
+            int new_x = width - 1 - x;
+            int new_y = height - 1 - y;
+            for (int c = 0; c < channels; c++){
+                data[(new_y *width + new_x) *channels + c] =data[(y *width + x) *channels + c];
+            }
+        }
+       }
+          write_image_data ("images/output/image_mirror_total.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+  }
+}                             
