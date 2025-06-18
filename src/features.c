@@ -193,6 +193,6 @@ void Color_Gray(char *source_path) {
         write_image_data("image/output/image_gray.bmp", width, height, data);
         free (data);
     } else{
-        pritnf("Erreur!")
+        pritnf("Erreur!");
     }
 }
