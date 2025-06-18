@@ -76,6 +76,10 @@ int main(int argc, char **argv) {
    color_in_green(configuration.filenames[0]);
    }
    
+   if ( strncmp( configuration.command, "color_invert", 12) == 0){
+    color_invert(configuration.filenames[0]);
+   }
+   
 
     if ( strncmp( configuration.command, "color_in_gray_luminance", 23) == 0){
    color_in_gray_luminance( configuration.filenames[0]);
