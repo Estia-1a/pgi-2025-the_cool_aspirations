@@ -51,6 +51,10 @@ int main(int argc, char **argv) {
     }
     min_component( configuration.filenames[0],t);
   }
+
+  if ( strncmp( configuration.command, "color_in_red" , 9) == 0 ){
+    color_in_red(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */
@@ -65,8 +69,13 @@ int main(int argc, char **argv) {
   }
 
    if ( strncmp( configuration.command, "color_in_blue", 13) == 0){
-   color_in_blue( configuration.filenames[0]);
+   color_in_blue(configuration.filenames[0]);
   }
+
+   if ( strncmp( configuration.command, "color_in_green", 14) == 0){
+   color_in_green(configuration.filenames[0]);
+   }
+   
 
     if ( strncmp( configuration.command, "color_in_gray_luminance", 23) == 0){
    color_in_gray_luminance( configuration.filenames[0]);

@@ -138,6 +138,24 @@ void min_component(char *source_path, int t) {
     }
 }
 
+void color_in_red (char *source_path) {
+int width, height, channels, x, y;
+unsigned char *data;
+if ( read_image_data (source_path, &data, &width, &height, &channels)){
+    for (y = 0; y < height; y++){
+        for (x=0; x < width; x++){
+            int index = (y*width+x) * channels;
+            data [index + 1] = 0; //couleur vert
+            data [index + 2] = 0; //couleur bleu
+        }
+    }
+    write_image_data ("images/output/image_in_red.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
+}
+
 
 void max_component(char *source_path, int t) {
     int width, height, channels;
@@ -214,4 +232,23 @@ void color_in_gray_luminance(char *source_path){
 } else {
     printf("Erreur !");
     }
+}
+
+void color_in_green(char *source_path) {
+    int width, height, channels;
+    unsigned char *data;
+
+    if (read_image_data(source_path, &data, &width, &height, &channels)) {
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int index = (y * width + x) * channels;
+                data [index] = 0; //couleur rouge
+                data [index + 2] = 0; //couleur bleu
+            }
+        }
+    write_image_data ("images/output/image_in_green.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
 }
