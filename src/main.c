@@ -51,6 +51,10 @@ int main(int argc, char **argv) {
     }
     min_component( configuration.filenames[0],t);
   }
+
+  if ( strncmp( configuration.command, "color_in_red" , 9) == 0 ){
+    color_in_red(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */

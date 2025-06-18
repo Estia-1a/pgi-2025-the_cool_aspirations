@@ -137,3 +137,21 @@ void min_component(char *source_path, int t) {
         printf("Erreur lors de la lecture de l'image\n");
     }
 }
+
+void color_in_red (char *source_path) {
+int width, height, channels, x, y;
+unsigned char *data;
+if ( read_image_data (source_path, &data, &width, &height, &channels)){
+    for (y = 0; y < height; y++){
+        for (x=0; x < width; x++){
+            int index = (y*width+x) * channels;
+            data [index + 1] = 0; //couleur vert
+            data [index + 2] = 0; //couleur bleu
+        }
+    }
+    write_image_data ("images/output/image_in_red.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+}
+}
