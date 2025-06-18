@@ -190,3 +190,26 @@ void color_in_blue(char *source_path) {
         printf("Erreur lors de la lecture de l'image\n");
     }
 }
+
+
+void color_in_gray_luminance(char *source_path){
+    int width, height, channels, x, y;
+    unsigned char *data;
+    if ( read_image_data(source_path, &data, &width, &height, &channels)){
+        for (y = 0; y < height; y++){
+            for(x = 0; x < width; x++){
+                int index = (y * width + x) * channels;
+                unsigned char R = data[index];
+                unsigned char G = data[index + 1];
+                unsigned char B = data[index + 2];
+                unsigned char gris = (0.21 * R + 0.72 * G + 0.07 * B);
+                data[index] = gris;
+                data[index + 1] = gris;
+                data[index + 2] = gris;
+            }
+        }
+        free(data);
+    } else{
+        printf("erreur");
+    }
+}
