@@ -185,9 +185,10 @@ void color_in_blue(char *source_path) {
                 
             }
         }
-        free(data);
-    } else {
-        printf("Erreur lors de la lecture de l'image\n");
+        write_image_data ("images/output/image_in_blue.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
     }
 }
 
@@ -208,8 +209,9 @@ void color_in_gray_luminance(char *source_path){
                 data[index + 2] = gris;
             }
         }
-        free(data);
-    } else{
-        printf("erreur");
+      write_image_data ("images/output/image_in_gray_luminance.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
     }
 }
