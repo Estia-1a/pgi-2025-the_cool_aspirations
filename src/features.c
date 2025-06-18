@@ -102,13 +102,13 @@ void min_pixel(char *source_path){
 
     printf("min_pixel (%d, %d): %d, %d, %d\n", xmin, ymin, rmin, gmin, bmin);
 
-    free(data);  // Libère la mémoire allouée
+    free(data);  
 }
 
 void min_component(char *source_path, int t) {
     int width, height, channels;
     int xmin = 0, ymin = 0;
-    int min = 256; // Max pour un canal RGB
+    int min = 256; 
     unsigned char *data;
 
     int resultat = read_image_data(source_path, &data, &width, &height, &channels);
@@ -145,8 +145,8 @@ if ( read_image_data (source_path, &data, &width, &height, &channels)){
     for (y = 0; y < height; y++){
         for (x=0; x < width; x++){
             int index = (y*width+x) * channels;
-            data [index + 1] = 0; //couleur vert
-            data [index + 2] = 0; //couleur bleu
+            data [index + 1] = 0; 
+            data [index + 2] = 0; 
         }
     }
     write_image_data ("images/output/image_in_red.bmp" , data, width, height);
@@ -160,7 +160,7 @@ if ( read_image_data (source_path, &data, &width, &height, &channels)){
 void max_component(char *source_path, int t) {
     int width, height, channels;
     int xmax = 0, ymax = 0;
-    int max = 0; // Max pour un canal RGB
+    int max = 0; 
     unsigned char *data;
 
     int resultat = read_image_data(source_path, &data, &width, &height, &channels);
@@ -198,8 +198,8 @@ void color_in_blue(char *source_path) {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int index = (y * width + x) * channels;
-                data[index] = 0;       // R
-                data[index + 1] = 0;   // G
+                data[index] = 0;       
+                data[index + 1] = 0;   
                 
             }
         }
@@ -242,8 +242,8 @@ void color_in_green(char *source_path) {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 int index = (y * width + x) * channels;
-                data [index] = 0; //couleur rouge
-                data [index + 2] = 0; //couleur bleu
+                data [index] = 0; 
+                data [index + 2] = 0; 
             }
         }
     write_image_data ("images/output/image_in_green.bmp" , data, width, height);
@@ -252,3 +252,24 @@ void color_in_green(char *source_path) {
     printf("Erreur !");
 }
 }
+
+void_mirror_total(char * source_path){
+    int width, height, channels;
+    unsigned char *data;
+    if (read_image_data(source_path, &data, &width, &height, &channels)){
+       unsigned char *data = (unsigned char*)malloc(width *height *channels *sizeof(unsigned cher));
+       for (int y = 0; y < height; y++){  
+        for (int x = 0; x < width; x++){
+            int new_x = width - 1 - x;
+            int new_y = height - 1 - y;
+            for (int c = 0; c < channels; c++){
+                data[(new_y *width + new_x) *channels + c] =data[(y *width + x) *channels + c];
+            }
+        }
+       }
+          write_image_data ("images/output/image_mirror_total.bmp" , data, width, height);
+    free(data);
+} else {
+    printf("Erreur !");
+  }
+}                             
