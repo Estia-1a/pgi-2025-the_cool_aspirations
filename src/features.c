@@ -345,4 +345,26 @@ void mirror_total (char * source_path){
 } else {
     printf("Erreur !");
   }
-}                             
+}
+
+void rotate_acw (char *source_path) {
+    int width, height, channels;
+    unsigned char *data;
+ 
+    read_image_data (source_path, &data, &width, &height, &channels);
+ 
+    unsigned char *new_data = (unsigned char*)malloc(width * height * channels * sizeof(unsigned char));
+ 
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int new_x = y;
+            int new_y = width - 1 - x;
+ 
+            for (int c = 0; c < channels; c++) {
+                new_data [(new_y * height + new_x) * channels + c] = data[(y * width + x) * channels + c];
+            }
+        }
+    }
+    write_image_data ("images/output/image_rotate_acw.bmp" , data, width, height);
+    free(data);
+}

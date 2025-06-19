@@ -97,6 +97,10 @@ int main(int argc, char **argv) {
   if (strncmp(configuration.command, "rotate_cw", 9) == 0) {
     rotate_cw(configuration.filenames[0]);
   }
+
+  if (strncmp(configuration.command, "rotate_acw", 10) == 0) {
+    rotate_acw(configuration.filenames[0]);
+  }
   
   return 0;
 }
