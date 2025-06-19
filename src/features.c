@@ -368,3 +368,72 @@ void rotate_acw (char *source_path) {
     write_image_data ("images/output/image_rotate_acw.bmp" , data, width, height);
     free(data);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void scale_crop(char *source_path, int center_x, int center_y, int width, int height){
+    int original_width, original_height, channels;
+    unsigned char *data;
+    read_image_data(source_path, &data, &original_width, &original_height, &channels);
+    int x_start = center_x - width / 2;
+    int y_start = center_y - height / 2;
+    if (x_start < 0){
+        x_start = 0;
+    } else if (x_start + width > original_width){
+        x_start = original_width - width;
+    }
+     if (y_start < 0){
+        y_start = 0;
+    } else if (y_start + height > original_height){
+        y_start = original_height - height;
+    }
+    unsigned char *new_data = (unsigned char*)malloc(width * height * channels * sizeof(unsigned char));
+ 
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int new_x = x_start + x;
+            int new_y = y_start + y;
+ 
+            pixelRGB *pixel = getPixel(data, original_width, original_height, channels, new_x, new_y);
+            unsigned char R = pixel->R;
+            unsigned char G = pixel->G;
+            unsigned char B = pixel->B;
+ 
+            new_data[(y * width + x) * channels] = R;
+            new_data[(y * width + x) * channels + 1] = G;
+            new_data[(y * width + x) * channels + 2] = B;
+        }
+    }
+    write_image_data("image_out.bmp", new_data, width, height);
+    free(new_data);
+    free_image_data(data);
+}
+
+
+
