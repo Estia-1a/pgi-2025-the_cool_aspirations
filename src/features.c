@@ -437,3 +437,30 @@ void scale_crop(char *source_path, int center_x, int center_y, int width, int he
 
 
 
+
+void color_desaturate (char *source_path) {
+    int width, height, channels;
+    unsigned char *data;
+ 
+    read_image_data(source_path, &data, &width, &height, &channels);
+ 
+    unsigned char *new_data = (unsigned char*)malloc(width * height * channels * sizeof(unsigned char));
+ 
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            pixelRGB* pixel = getPixel(data, width, height, channels, x, y);
+ 
+            unsigned char R = pixel->R;
+            unsigned char G = pixel->G;
+            unsigned char B = pixel->B;
+ 
+             unsigned char value = (R+G +B) / 3;
+ 
+            new_data[(y * width + x) * channels] = value;
+            new_data[(y * width + x) * channels + 1] =value;
+            new_data[(y * width + x) * channels + 2] = value ;
+        }
+    }
+    write_image_data ("images/output/image_color_desaturate.bmp" , data, width, height);
+    free(data);
+}
